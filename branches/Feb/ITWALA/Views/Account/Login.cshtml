@@ -1,0 +1,65 @@
+﻿@using ITWALA.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Log in";
+}
+
+<div id="loginModal" class="modal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <input type="button" data-dismiss="modal" class="close" aria-hidden="true" value="&times;" />
+                @Html.Label("Login")
+            </div>
+            <div class="modal-body">
+                @using (Html.BeginForm("Login_POST", "Account", new { ReturnUrl = HttpContext.Current.Request.Url.ToString() }, FormMethod.Post, new { @style="width:100%;display:table", @class = "form-horizontal", role = "form", id = "loginForm" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div style="width: 55%; display: table-cell">
+                        @Html.ValidationSummary("", new {@class = "text-danger", @id = "LoginValidationErrorDiv"})
+                        <div class="form-group">
+                            <div class="col-sm-2">
+                                @Html.TextBoxFor(m => m.Username, new {@class = "form-control", @placeholder = "Username"})
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-2">
+                                @Html.TextBoxFor(m => m.Password, new {@class = "form-control", @placeholder = "Password"})
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <div class="checkbox">
+                                    @Html.CheckBoxFor(m => m.RememberMe)
+                                    @Html.LabelFor(m => m.RememberMe)
+                                </div>
+                            </div>
+                        </div>
+                    </div>  
+                    <div style="width:5%"></div>
+                    <div style="width: 40%; display: table-cell">
+                        <div>
+                            @Html.ActionLink(" Login with Google", "GoogleLogin", "Account", new { provider = "google" }, new { @class = "btn btn-google fa fa-google" })
+                        </div>
+                        <div style="padding-top: 2em">
+                            @*@Html.ActionLink("Login with Fb", "ExternalLogin", "Account", new { provider = "facebook" }, null)*@
+                            @Html.ActionLink(" Login with Facebook", "FacebookLogin", "Account", new { @class = "btn btn-facebook fa fa-facebook" })
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="modal-footer">
+                <div class="form-group">
+                    <div class="col-lg-offset-3 col-lg-4">
+                        <button class="btn btn-primary" type="submit" id="LoginBtn">Login</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

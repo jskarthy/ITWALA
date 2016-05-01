@@ -1,0 +1,47 @@
+﻿@model ITWALA.Models.GpaViewModel
+
+@{
+    ViewBag.Title = "ShowCategories";
+}
+<script>
+    $(function () {
+        jQuery.validator.unobtrusive.parse();
+        jQuery.validator.unobtrusive.parse("#ShowCategoriesForm");
+    });
+
+</script>
+@using (Html.BeginForm("ShowCategories", "Gpa", FormMethod.Post, new { id = "ShowCategoriesForm" }))
+{
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+
+    <div class="form-horizontal">
+        <div class="form-group">
+            @Html.LabelFor(model => model.RegulationYear, new { @class = "col-md-2" })
+            <div class="col-md-offset-3 col-md-4">
+                @Html.DropDownListFor(model => model.RegulationYear, new SelectList(ViewBag.Regulation, "Value", "Text"), "Select Regulation")
+                @*@Html.ValidationMessage("Department", "", new { @class = "text-danger" }, "hello")*@
+                @*@Html.ValidationMessageFor(model => model.RegulationYear, "", new { @class = "text-danger" })*@
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.DepartmentId, new { @class = "col-md-2" })
+            <div class="col-md-offset-3 col-md-4">
+                @Html.DropDownListFor(model => model.DepartmentId, new SelectList(ViewBag.Department, "DepartmentId", "DepartmentShortName"), "Select Department")
+                @*@Html.ValidationMessageFor(model => model.DepartmentId, "", new { @class = "text-danger" })*@
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Semester, new { @class = "col-md-2" })
+            <div class="col-md-offset-3 col-md-4">
+                @Html.DropDownListFor(model => model.Semester, new SelectList(ViewBag.Semester, "Value", "Text"), "Select Semester")
+                @*@Html.ValidationMessageFor(model => model.Semester, "", new { @class = "text-danger" })*@
+            </div>
+        </div>
+        <div class="form-group hidden">
+            <div class="col-md-offset-1 col-md-2">
+                <input type="submit" value="Submit" />
+            </div>
+        </div>
+    </div>
+}
+

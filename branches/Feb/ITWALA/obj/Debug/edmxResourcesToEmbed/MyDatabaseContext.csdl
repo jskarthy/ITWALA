@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MyDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="DepartmentId" />
+    </Key>
+    <Property Name="DepartmentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DepartmentName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DepartmentShortName" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="SubjectCategories" Relationship="Self.FK__SubjectCa__Depar__5CD6CB2B" FromRole="Departments" ToRole="SubjectCategory" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SubjectCategory">
+    <Key>
+      <PropertyRef Name="SubjectCategoryId" />
+    </Key>
+    <Property Name="SubjectCategoryId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="RegulationYear" Type="Int16" Nullable="false" />
+    <Property Name="DepartmentId" Type="Int32" Nullable="false" />
+    <Property Name="Semester" Type="Byte" Nullable="false" />
+    <NavigationProperty Name="Department" Relationship="Self.FK__SubjectCa__Depar__5CD6CB2B" FromRole="SubjectCategory" ToRole="Departments" />
+    <NavigationProperty Name="Subjects" Relationship="Self.FK__Subjects__Subjec__6FE99F9F" FromRole="SubjectCategory" ToRole="Subjects" />
+  </EntityType>
+  <EntityType Name="Subject">
+    <Key>
+      <PropertyRef Name="SubjectId" />
+      <PropertyRef Name="SubjectCategory" />
+    </Key>
+    <Property Name="SubjectId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SubjectName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SubjectAbbreviation" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Credits" Type="Byte" Nullable="false" />
+    <Property Name="SubjectCategory" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="SubjectCategory1" Relationship="Self.FK__Subjects__Subjec__6FE99F9F" FromRole="Subjects" ToRole="SubjectCategory" />
+    <NavigationProperty Name="ElectiveSubjects" Relationship="MyDatabaseModel.FK__ElectiveSubjects__2BFE89A6" FromRole="Subject" ToRole="ElectiveSubject" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Userid" />
+    </Key>
+    <Property Name="Userid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__SubjectCa__Depar__5CD6CB2B">
+    <End Role="Departments" Type="Self.Department" Multiplicity="1" />
+    <End Role="SubjectCategory" Type="Self.SubjectCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Departments">
+        <PropertyRef Name="DepartmentId" />
+      </Principal>
+      <Dependent Role="SubjectCategory">
+        <PropertyRef Name="DepartmentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Subjects__Subjec__6FE99F9F">
+    <End Role="SubjectCategory" Type="Self.SubjectCategory" Multiplicity="1" />
+    <End Role="Subjects" Type="Self.Subject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SubjectCategory">
+        <PropertyRef Name="SubjectCategoryId" />
+      </Principal>
+      <Dependent Role="Subjects">
+        <PropertyRef Name="SubjectCategory" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MyDatabaseEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Departments" EntityType="Self.Department" />
+    <EntitySet Name="Roles" EntityType="Self.Role" />
+    <EntitySet Name="SubjectCategories" EntityType="Self.SubjectCategory" />
+    <EntitySet Name="Subjects" EntityType="Self.Subject" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <AssociationSet Name="FK__SubjectCa__Depar__5CD6CB2B" Association="Self.FK__SubjectCa__Depar__5CD6CB2B">
+      <End Role="Departments" EntitySet="Departments" />
+      <End Role="SubjectCategory" EntitySet="SubjectCategories" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Subjects__Subjec__6FE99F9F" Association="Self.FK__Subjects__Subjec__6FE99F9F">
+      <End Role="SubjectCategory" EntitySet="SubjectCategories" />
+      <End Role="Subjects" EntitySet="Subjects" />
+    </AssociationSet>
+    <EntitySet Name="ElectiveSubjects" EntityType="MyDatabaseModel.ElectiveSubject" />
+    <AssociationSet Name="FK__ElectiveSubjects__2BFE89A6" Association="MyDatabaseModel.FK__ElectiveSubjects__2BFE89A6">
+      <End Role="Subject" EntitySet="Subjects" />
+      <End Role="ElectiveSubject" EntitySet="ElectiveSubjects" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="ElectiveSubject">
+    <Key>
+      <PropertyRef Name="SubjectId" />
+      <PropertyRef Name="SubjectCategory" />
+      <PropertyRef Name="ElectiveId" />
+    </Key>
+    <Property Name="SubjectId" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="SubjectName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SubjectAbbreviation" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Credits" Type="Byte" Nullable="false" />
+    <Property Name="SubjectCategory" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ElectiveId" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Subject" Relationship="MyDatabaseModel.FK__ElectiveSubjects__2BFE89A6" FromRole="ElectiveSubject" ToRole="Subject" />
+  </EntityType>
+  <Association Name="FK__ElectiveSubjects__2BFE89A6">
+    <End Type="MyDatabaseModel.Subject" Role="Subject" Multiplicity="1" />
+    <End Type="MyDatabaseModel.ElectiveSubject" Role="ElectiveSubject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subject">
+        <PropertyRef Name="SubjectId" />
+        <PropertyRef Name="SubjectCategory" />
+      </Principal>
+      <Dependent Role="ElectiveSubject">
+        <PropertyRef Name="ElectiveId" />
+        <PropertyRef Name="SubjectCategory" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

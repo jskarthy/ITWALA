@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MyDatabaseModelStoreContainer" CdmEntityContainer="VSDBEntities">
+    <EntitySetMapping Name="Departments">
+      <EntityTypeMapping TypeName="MyDatabaseModel.Department">
+        <MappingFragment StoreEntitySet="Departments">
+          <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+          <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+          <ScalarProperty Name="DepartmentShortName" ColumnName="DepartmentShortName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="MyDatabaseModel.Role">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubjectCategories">
+      <EntityTypeMapping TypeName="MyDatabaseModel.SubjectCategory">
+        <MappingFragment StoreEntitySet="SubjectCategory">
+          <ScalarProperty Name="SubjectCategoryId" ColumnName="SubjectCategoryId" />
+          <ScalarProperty Name="RegulationYear" ColumnName="RegulationYear" />
+          <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+          <ScalarProperty Name="Semester" ColumnName="Semester" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Subjects">
+      <EntityTypeMapping TypeName="MyDatabaseModel.Subject">
+        <MappingFragment StoreEntitySet="Subjects">
+          <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+          <ScalarProperty Name="SubjectName" ColumnName="SubjectName" />
+          <ScalarProperty Name="SubjectAbbreviation" ColumnName="SubjectAbbreviation" />
+          <ScalarProperty Name="Credits" ColumnName="Credits" />
+          <ScalarProperty Name="SubjectCategory" ColumnName="SubjectCategory" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="MyDatabaseModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Userid" ColumnName="Userid" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_getDepartments" FunctionName="MyDatabaseModel.Store.sp_getDepartments">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MyDatabaseModel.sp_getDepartments_Result">
+          <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+          <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+          <ScalarProperty Name="DepartmentShortName" ColumnName="DepartmentShortName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_getRoles" FunctionName="MyDatabaseModel.Store.sp_getRoles">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MyDatabaseModel.sp_getRoles_Result">
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_getSubjectCategory" FunctionName="MyDatabaseModel.Store.sp_getSubjectCategory">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MyDatabaseModel.sp_getSubjectCategory_Result">
+          <ScalarProperty Name="SubjectCategoryId" ColumnName="SubjectCategoryId" />
+          <ScalarProperty Name="RegulationYear" ColumnName="RegulationYear" />
+          <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+          <ScalarProperty Name="Semester" ColumnName="Semester" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_getSubjectDetails" FunctionName="MyDatabaseModel.Store.sp_getSubjectDetails">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MyDatabaseModel.sp_getSubjectDetails_Result">
+          <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+          <ScalarProperty Name="SubjectName" ColumnName="SubjectName" />
+          <ScalarProperty Name="SubjectAbbreviation" ColumnName="SubjectAbbreviation" />
+          <ScalarProperty Name="Credits" ColumnName="Credits" />
+          <ScalarProperty Name="RegulationYear" ColumnName="RegulationYear" />
+          <ScalarProperty Name="DepartmentShortName" ColumnName="DepartmentShortName" />
+          <ScalarProperty Name="Semester" ColumnName="Semester" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_getSubjects" FunctionName="MyDatabaseModel.Store.sp_getSubjects">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MyDatabaseModel.sp_getSubjects_Result">
+          <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+          <ScalarProperty Name="SubjectName" ColumnName="SubjectName" />
+          <ScalarProperty Name="SubjectAbbreviation" ColumnName="SubjectAbbreviation" />
+          <ScalarProperty Name="Credits" ColumnName="Credits" />
+          <ScalarProperty Name="SubjectCategory" ColumnName="SubjectCategory" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_getUsers" FunctionName="MyDatabaseModel.Store.sp_getUsers">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MyDatabaseModel.sp_getUsers_Result">
+          <ScalarProperty Name="Userid" ColumnName="Userid" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_insertDepartment" FunctionName="MyDatabaseModel.Store.sp_insertDepartment" />
+    <FunctionImportMapping FunctionImportName="sp_insertRole" FunctionName="MyDatabaseModel.Store.sp_insertRole" />
+    <FunctionImportMapping FunctionImportName="sp_insertSubject" FunctionName="MyDatabaseModel.Store.sp_insertSubject" />
+    <FunctionImportMapping FunctionImportName="sp_insertSubjectCategory" FunctionName="MyDatabaseModel.Store.sp_insertSubjectCategory" />
+    <FunctionImportMapping FunctionImportName="sp_insertUsers" FunctionName="MyDatabaseModel.Store.sp_insertUsers" />
+  </EntityContainerMapping>
+</Mapping>

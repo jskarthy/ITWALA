@@ -1,0 +1,49 @@
+﻿@model ITWALA.Models.GpaViewModel
+
+@{
+    ViewBag.Title = "ShowCategories";
+}
+
+<div id="showCategoriesModal" class="modal" tabindex="-1" role="dialog" data-backdrop="false">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width:400px">
+            <div class="modal-header">
+                <input type="button" data-dismiss="modal" class="close" aria-hidden="true" value="&times;" />
+                @Html.Label("Show Categories")
+            </div>
+            <div class="modal-body">
+                @using (Html.BeginForm("ShowCategories_POST", "Gpa", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "ShowCategoriesForm" }))
+                {
+                    @Html.ValidationSummary("", new { @class = "text-danger col-sm-offset-1" })
+                    <div class="form-horizontal">
+                            <div class="form-group">
+                                @*@Html.LabelFor(model => model.RegulationYear, new {@class = "col-md-2"})*@
+                                <div class="col-sm-offset-2">
+                                    @Html.DropDownListFor(model => model.RegulationYear, new SelectList(ViewBag.Regulation, "Value", "Text"), "Select Regulation", new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @*@Html.LabelFor(model => model.DepartmentId, new {@class = "col-md-2"})*@
+                                <div class="col-sm-offset-2">
+                                    @Html.DropDownListFor(model => model.DepartmentId, new SelectList(ViewBag.Department, "DepartmentId", "DepartmentShortName"), "Select Department", new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @*@Html.LabelFor(model => model.Semester, new {@class = "col-md-2"})*@
+                                <div class="col-sm-offset-2">
+                                    @Html.DropDownListFor(model => model.Semester, new SelectList(ViewBag.Semester, "Value", "Text"), "Select Semester", new { @class = "form-control" })
+                                </div>
+                            </div>
+                    </div>
+                }
+            </div>
+            <div class="modal-footer">
+                <div class="form-group">
+                    <div class="col-lg-offset-3 col-lg-4">
+                        <button class="btn btn-primary" id="ShowCategoriesBtn">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

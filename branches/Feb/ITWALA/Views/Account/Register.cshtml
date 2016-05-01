@@ -1,0 +1,77 @@
+﻿@model ITWALA.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+}
+<style>
+    .form-control {
+        width:300px;
+    }
+</style>
+<div id="registerModal" class="modal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width:800px;">
+            <div class="modal-header">
+                <input type="button" data-dismiss="modal" class="close" aria-hidden="true" value="&times;" />
+                @Html.Label("Register")
+            </div>
+            <div class="modal-body">
+                @using (Html.BeginForm("Register_POST", "Account", FormMethod.Post, new { @class = "form-horizontal", @style="width:100%;display:table", role = "form", id="regForm"}))
+                {
+                    @Html.AntiForgeryToken()
+                    @*@Html.ValidationSummary("", new { @class = "text-danger" })*@
+                    <div style="width:60%;display: table-cell">
+                        <div class="form-group">
+                            @*@Html.LabelFor(m => m.Username, new {@class = "col-md-3 control-label"})*@
+                            <div class="col-sm-2">
+                                @Html.TextBoxFor(m => m.Username, new {@class = "form-control",@placeholder = "Username"})
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @*@Html.LabelFor(m => m.Email, new {@class = "col-md-3 control-label"})*@
+                            <div class="col-sm-2">
+                                @Html.TextBoxFor(m => m.Email, new {@class = "form-control", @placeholder = "Email Address" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @*@Html.LabelFor(m => m.Password, new {@class = "col-md-2 control-label"})*@
+                            <div class="col-sm-2">
+                                @Html.PasswordFor(m => m.Password, new {@class = "form-control", @placeholder = "Password" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @*@Html.LabelFor(m => m.ConfirmPassword, new {@class = "col-md-2 control-label"})*@
+                            <div class="col-sm-2">
+                                @Html.PasswordFor(m => m.ConfirmPassword, new {@class = "form-control", @placeholder = "Confirm Password" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @*@Html.LabelFor(m => m.FirstName, new {@class = "col-md-2 control-label"})*@
+                            <div class="col-sm-2">
+                                @Html.TextBoxFor(m => m.FirstName, new {@class = "form-control", @placeholder = "First Name" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @*@Html.LabelFor(m => m.LastName, new {@class = "col-md-2 control-label"})*@
+                            <div class="col-sm-2">
+                                @Html.TextBoxFor(m => m.LastName, new {@class = "form-control", @placeholder = "Last Name" })
+                            </div>
+                        </div>
+                    </div>
+                    <div style="width: 40%; display: table-cell">
+                        @Html.ValidationSummary("", new { @class = "text-danger", @id = "RegisterValidationErrorDiv", @style = "border-left:1px solid black" })
+                    </div>
+                }
+            </div>
+            <div class="modal-footer">
+                <div class="form-group">
+                    <div class="col-lg-offset-3 col-lg-4">
+                        <button class="btn btn-primary" id="RegisterBtn" type="submit">Register</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,156 @@
+﻿@using System.Web.Script.Serialization
+@model IEnumerable<ITWALA.Models.SubjectViewModel>
+
+@{
+    ViewBag.Title = "CalcGpa";
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SubjectId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SubjectName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Credits)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Grade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Marks)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- ko foreach:SubjectsList-->
+        <tr>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.SubjectId)*@
+                <!-- ko if:SubjectId.length > 6&& parseInt(SubjectId.slice(-1))%2 == 1-->
+                <select data-bind="options:$root.elective1,optionsText:'Text',optionsValue:'Value',optionsCaption:SubjectId,value:selectedElective1"></select>
+                <!--/ko-->
+                <!-- ko if:SubjectId.length > 6&& parseInt(SubjectId.slice(-1))%2 ==0-->
+                <select data-bind="options:$root.elective2,optionsText:'Text',optionsValue:'Value',optionsCaption:SubjectId,value:selectedElective2"></select>
+                <!--/ko-->
+                <!-- ko if:SubjectId.length <7-->
+                <span class="subjectId" data-bind="text:SubjectId"></span>
+                <!--/ko-->
+            </td>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.SubjectName)*@
+                <span data-bind="text:SubjectName"></span>
+            </td>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.Credits)*@
+                <span data-bind="text:Credits"></span>
+            </td>
+            <td>
+                @*@Html.DropDownListFor(modelItem => item.Grade, new SelectList(ViewBag.Grade, "Value", "Text"), new { data_bind = "options: grades, optionsText: 'Text', optionsCaption: 'Select...', optionsValue: 'Value',value:Grade" })*@
+                @*<select data-bind="options:$root.Grades, optionsText: 'Text'"></select>*@
+                <select data-bind="options:$root.GradesList,optionsText:'Text',optionsValue:'Value',value:grade,optionsCaption: 'Select'"></select>
+
+            </td>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.Marks)*@
+                <span data-bind="text:mark"></span>
+            </td>
+        </tr>
+        <!-- /ko -->
+    </tbody>
+</table>
+<div align="center">
+    <input type="button" value="Calculate GPA" data-bind="click:calculate" />
+</div>
+<div align="center">
+    <span data-bind="text:gpa" id="spangpa"></span>
+</div>
+@section scripts{
+    @Scripts.Render("~/bundles/knockout")
+    <script src="~/Scripts/knockout-3.4.0.debug.js"></script>
+    <script src="~/Scripts/knockout.mapping-latest.js"></script>
+    <script type="text/javascript">
+        function Subjects(id, name, credits, meals) {
+            var self = this;
+            self.SubjectId = id;
+            self.SubjectName = ko.observable(name);
+            self.Credits = ko.observable(credits);
+            self.grade = ko.observable(meals);
+            self.mark = ko.computed(function() {
+                var mark = self.grade();
+                return mark ? mark : 'None';
+            });
+            self.selectedElective1 = ko.observable();
+            self.selectedElective2 = ko.observable();
+            self.selectedElective1.subscribe(function(newvalue) {
+                self.electivechanged(newvalue);
+            });
+            self.selectedElective2.subscribe(function(newvalue) {
+                self.electivechanged(newvalue);
+            });
+            self.electivechanged=function(newvalue) {
+
+                if (newvalue && newvalue.length <= 6) {
+                    $.get("GetElectiveSubjectDetails?subjectId="+newvalue+"&subjectCategoryId="+'@ViewBag.SubjectCategory', function(data) {
+                        data = $.parseJSON(data);
+                        self.SubjectName(data.SubjectName);
+                        self.Credits(data.Credits);
+                    });
+                } else {
+                    self.SubjectName("Elective");
+                    self.Credits(3);
+                }
+            }
+        }
+
+        function ViewModel() {
+            var self = this;
+
+            self.GradesList = ko.observableArray([]);
+            self.SubjectsList = ko.observableArray([]);
+            self.gpa = ko.observable();
+            self.calculate = function() {
+                var marksTotal = 0;
+                var creditsTotal = 0;
+                $.each(self.SubjectsList(), function(index, subject) {
+                    creditsTotal += parseInt(subject.Credits());
+                    marksTotal = marksTotal + parseInt(subject.mark()) * parseInt(subject.Credits());
+                });
+                var gpa = parseFloat(marksTotal / creditsTotal).toFixed(2);
+                if (!isNaN(gpa)) {
+                    self.gpa(gpa);
+                } else {
+                    self.gpa("");
+                }
+            }
+            self.elective1 = ko.observableArray([]);
+            self.elective2 = ko.observableArray([]);
+        }
+
+        $(document).ready(function() {
+            var initialData = @Html.Raw(new JavaScriptSerializer().Serialize(Model));
+            var subjectCategory = '@ViewBag.SubjectCategory';
+            var gradeViewModel = new ViewModel();
+            $.get("GetGrades", function(data) {
+                gradeViewModel.GradesList(data);
+            });
+            $.each(initialData, function(index, data) {
+                gradeViewModel.SubjectsList.push(new Subjects(data.SubjectId, data.SubjectName, data.Credits, gradeViewModel.GradesList[0]));
+            });
+
+            $.get("GetElectiveJson?subjectCategoryId="+subjectCategory, function(data) {
+
+                gradeViewModel.elective1(data[0].ElectiveSelectListItems);
+                gradeViewModel.elective2(data[1].ElectiveSelectListItems);
+            });
+            //$.get("GetElective2Json", function(data) {
+            //    gradeViewModel.elective2(data);
+            //});
+            ko.applyBindings(gradeViewModel);
+
+        });
+        //ko.applyBindings(new ViewModel());
+    </script>
+}

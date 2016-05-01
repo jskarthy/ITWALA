@@ -1,0 +1,31 @@
+﻿@using Microsoft.AspNet.Identity
+<ul class="nav navbar-nav navbar-right">
+    @if (Request.IsAuthenticated)
+    {
+        <li class="dropdown">
+            <a href="" class="dropdown-toggle" data-toggle="dropdown">@User.Identity.GetUserName()<span class="caret"></span></a>
+            <ul class="dropdown-menu pull-left">
+                @*<li><a href=""><span class="glyphicon glyphicon-edit"></span> Edit Profile</a></li>*@
+                <li>@Html.ActionLink(" Edit Profile","EditProfile","Account",null,new { @class = "glyphicon glyphicon-edit"})</li>
+                <li>@Html.ActionLink(" Privacy", "EditProfile", "Account", null, new { @class = "glyphicon glyphicon-eye-close" })</li>
+                <li>@Html.ActionLink(" Settings", "EditProfile", "Account", null, new { @class = "glyphicon glyphicon-cog" })</li>
+                <li class="divider"></li>
+                <li>@Html.ActionLink(" Change Password", "ChangePassword", "Account", null, new { @class = "glyphicon glyphicon-lock" })</li>
+                <li class="divider"></li>
+                <li>@Html.ActionLink(" Logout", "LogOff", "Account", null, new { @class = "glyphicon glyphicon-off", @id = "logoutForm" })</li>
+            </ul>
+        </li>
+        <li>@Html.ActionLink("Logout", "LogOff", "Account", null, new { id = "logoutForm", @class = "navbar-right" })</li>
+
+    }
+    else
+    {
+        <li><a id="registerLink" data-toggle="modal" data-target="#myModal" href="#">Register</a></li>
+        <li><a id="loginLink" data-toggle="modal" data-target="#myModal" href="#">Login</a></li>
+    }
+</ul>
+
+<div id="myModal">
+    @{ Html.RenderAction("Register", "Account"); }
+    @{ Html.RenderAction("Login", "Account", new {ReturnUrl = HttpContext.Current.Request.Url.ToString()}); }
+</div>

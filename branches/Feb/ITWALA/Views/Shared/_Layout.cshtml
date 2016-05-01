@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")  
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/knockout")
+    <script src="~/Scripts/jquery-ui-1.11.4.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.css" rel="stylesheet" />
+    <style>
+        div.modal-backdrop.in {
+            position: relative;
+        }
+        .ui-dialog{
+            position:absolute;
+            top:70px;
+            left:600px;
+            z-index:103;
+        }
+        .ui-widget-overlay{
+            z-index:102;
+        }
+    </style>
+    <script>
+        $(document).ready(function() {
+            //$("#registerModal").modal('show');
+            $("#registerLink").click(function () {
+                $("#RegisterValidationErrorDiv").html("");
+                $("#registerModal").modal('show');
+            });
+            $("#loginLink").click(function () {
+                $("#LoginValidationErrorDiv").html("");
+                $("#loginModal").modal('show');
+            });
+            $("#ShowCategoriesBtn").click(function () {
+                $("#ShowCategoriesForm").submit();
+            });
+            $("#LoginBtn").click(function () {
+                //$("#loginForm").submit();
+                $("#LoginValidationErrorDiv").html("");
+                $.ajax({
+                    type: "POST",
+                    url: "@Url.Action("Login_Validate","Account")",
+                    data: $('#loginForm').serialize(),
+                    success: function (response) {
+                        if (response != null) {
+                            if (response.result === true) {
+                                $("#loginForm").submit();
+                            } else {
+                                $.each(response.errors, function (index, error) {
+                                    $("#LoginValidationErrorDiv").append(error + "<br/>");
+                                });
+                            }
+                        }
+                        //$("#modal").modal('hide');
+                    },
+                    error: function (err) {
+                        console.log(err);
+                        alert("Something went wrong");
+                    }
+                });
+            });
+            $("#RegisterBtn").click(function (e) {
+                $("#RegisterValidationErrorDiv").html("");
+                $.ajax({
+                    type: "POST",
+                    url: "@Url.Action("Register_Validate", "Account")",
+                    data: $('#regForm').serialize(),
+                    success: function(response) {
+                        if (response != null) {
+                            if (response.result === true) {
+                                $("#regForm").submit();
+                            } else {
+                                $.each(response.errors, function(index, error) {
+                                    $("#RegisterValidationErrorDiv").append(error + "<br/>");
+                                });
+                            }
+                        }
+                    },
+                    error: function(err) {
+                        console.log(err);
+                        alert("Something went wrong");
+                    }
+                });
+            });
+
+            $('#ShowCategoriesLink').click(function() {
+                $("#showCategoriesModal").modal('show');
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top"> 
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("ITWALA", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li><a id="ShowCategoriesLink" data-toggle="modal" data-target="#categories-dialog" href="#">Gpa</a></li>
+
+                </ul>
+
+                @Html.Partial("_LoginPartial")
+            </div>
+            
+        </div>
+    </div>
+    <div style="padding-top:5em"></div>
+    <div class="container body-content">
+        @RenderBody()
+        <div id="categories-dialog">
+            @{
+                Html.RenderAction("ShowCategories", "Gpa");
+            }
+        </div>
+        <hr />
+        <footer></footer>
+    </div>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

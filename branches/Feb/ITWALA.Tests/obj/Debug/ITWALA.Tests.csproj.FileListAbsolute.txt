@@ -1,0 +1,96 @@
+C:\Users\Karthi\Documents\Visual Studio 2015\Projects\ITWALA\ITWALA.Tests\bin\Debug\roslyn\csc.exe
+C:\Users\Karthi\Documents\Visual Studio 2015\Projects\ITWALA\ITWALA.Tests\bin\Debug\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Karthi\Documents\Visual Studio 2015\Projects\ITWALA\ITWALA.Tests\bin\Debug\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Karthi\Documents\Visual Studio 2015\Projects\ITWALA\ITWALA.Tests\bin\Debug\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Karthi\Documents\Visual Studio 2015\Projects\ITWALA\ITWALA.Tests\bin\Debug\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Karthi\Documents\Visual Studio 2015\Projects\ITWALA\ITWALA.Tests\bin\Debug\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Karthi\Documents\Visual Studio 2015\Projects\ITWALA\ITWALA.Tests\bin\Debug\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Karthi\Documents\Visual Studio 2015\Projects\ITWALA\ITWALA.Tests\bin\Debug\roslyn\System.Collections.Immutable.dll
+C:\Users\Karthi\Documents\Visual Studio 2015\Projects\ITWALA\ITWALA.Tests\bin\Debug\roslyn\System.Reflection.Metadata.dll
+C:\Users\Karthi\Documents\Visual Studio 2015\Projects\ITWALA\ITWALA.Tests\bin\Debug\roslyn\vbc.exe
+C:\Users\Karthi\Documents\Visual Studio 2015\Projects\ITWALA\ITWALA.Tests\bin\Debug\roslyn\VBCSCompiler.exe
+C:\Users\Karthi\Documents\Visual Studio 2015\Projects\ITWALA\ITWALA.Tests\bin\Debug\roslyn\VBCSCompiler.exe.config
+C:\Users\Karthi\Documents\Visual Studio 2015\Projects\ITWALA\ITWALA.Tests\bin\Debug\ITWALA.Tests.dll.config
+C:\Users\Karthi\Documents\Visual Studio 2015\Projects\ITWALA\ITWALA.Tests\bin\Debug\ITWALA.Tests.dll
+C:\Users\Karthi\Documents\Visual Studio 2015\Projects\ITWALA\ITWALA.Tests\bin\Debug\ITWALA.Tests.pdb
+C:\Users\Karthi\Documents\Visual Studio 2015\Projects\ITWALA\ITWALA.Tests\bin\Debug\ITWALA.dll
+C:\Users\Karthi\Documents\Visual Studio 2015\Projects\ITWALA\ITWALA.Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\Karthi\Documents\Visual Studio 2015\Projects\ITWALA\ITWALA.Tests\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Users\Karthi\Documents\Visual Studio 2015\Projects\ITWALA\ITWALA.Tests\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Karthi\Documents\Visual Studio 2015\Projects\ITWALA\ITWALA.Tests\bin\Debug\System.Web.Helpers.dll
+C:\Users\Karthi\Documents\Visual Studio 2015\Projects\ITWALA\ITWALA.Tests\bin\Debug\System.Web.Mvc.dll
+C:\Users\Karthi\Documents\Visual Studio 2015\Projects\ITWALA\ITWALA.Tests\bin\Debug\System.Web.Razor.dll
+C:\Users\Karthi\Documents\Visual Studio 2015\Projects\ITWALA\ITWALA.Tests\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\Users\Karthi\Documents\Visual Studio 2015\Projects\ITWALA\ITWALA.Tests\bin\Debug\System.Web.WebPages.dll
+C:\Users\Karthi\Documents\Visual Studio 2015\Projects\ITWALA\ITWALA.Tests\bin\Debug\System.Web.WebPages.Razor.dll
+C:\Users\Karthi\Documents\Visual Studio 2015\Projects\ITWALA\ITWALA.Tests\bin\Debug\Microsoft.Owin.dll
+C:\Users\Karthi\Documents\Visual Studio 2015\Projects\ITWALA\ITWALA.Tests\bin\Debug\System.Web.Optimization.dll
+C:\Users\Karthi\Documents\Visual Studio 2015\Projects\ITWALA\ITWALA.Tests\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Karthi\Documents\Visual Studio 2015\Projects\ITWALA\ITWALA.Tests\bin\Debug\Owin.dll
+C:\Users\Karthi\Documents\Visual Studio 2015\Projects\ITWALA\ITWALA.Tests\bin\Debug\EntityFramework.dll
+C:\Users\Karthi\Documents\Visual Studio 2015\Projects\ITWALA\ITWALA.Tests\bin\Debug\ITWALA.pdb
+C:\Users\Karthi\Documents\Visual Studio 2015\Projects\ITWALA\ITWALA.Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
+C:\Users\Karthi\Documents\Visual Studio 2015\Projects\ITWALA\ITWALA.Tests\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Karthi\Documents\Visual Studio 2015\Projects\ITWALA\ITWALA.Tests\bin\Debug\System.Web.Helpers.xml
+C:\Users\Karthi\Documents\Visual Studio 2015\Projects\ITWALA\ITWALA.Tests\bin\Debug\System.Web.Mvc.xml
+C:\Users\Karthi\Documents\Visual Studio 2015\Projects\ITWALA\ITWALA.Tests\bin\Debug\System.Web.Razor.xml
+C:\Users\Karthi\Documents\Visual Studio 2015\Projects\ITWALA\ITWALA.Tests\bin\Debug\System.Web.WebPages.xml
+C:\Users\Karthi\Documents\Visual Studio 2015\Projects\ITWALA\ITWALA.Tests\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\Users\Karthi\Documents\Visual Studio 2015\Projects\ITWALA\ITWALA.Tests\bin\Debug\System.Web.WebPages.Razor.xml
+C:\Users\Karthi\Documents\Visual Studio 2015\Projects\ITWALA\ITWALA.Tests\bin\Debug\Microsoft.Owin.xml
+C:\Users\Karthi\Documents\Visual Studio 2015\Projects\ITWALA\ITWALA.Tests\bin\Debug\System.Web.Optimization.xml
+C:\Users\Karthi\Documents\Visual Studio 2015\Projects\ITWALA\ITWALA.Tests\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Karthi\Documents\Visual Studio 2015\Projects\ITWALA\ITWALA.Tests\bin\Debug\EntityFramework.xml
+C:\Users\Karthi\Documents\Visual Studio 2015\Projects\ITWALA\ITWALA.Tests\obj\Debug\ITWALA.Tests.csprojResolveAssemblyReference.cache
+C:\Users\Karthi\Documents\Visual Studio 2015\Projects\ITWALA\ITWALA.Tests\obj\Debug\ITWALA.Tests.dll
+C:\Users\Karthi\Documents\Visual Studio 2015\Projects\ITWALA\ITWALA.Tests\obj\Debug\ITWALA.Tests.pdb
+C:\Users\Karthi\Documents\Visual Studio 2015\Projects\ITWALA\ITWALA.Tests\bin\Debug\AutoMapper.dll
+C:\Users\Karthi\Documents\Visual Studio 2015\Projects\ITWALA\ITWALA.Tests\bin\Debug\AutoMapper.xml
+D:\MyProjects\ITWALA.Tests\bin\Debug\roslyn\csc.exe
+D:\MyProjects\ITWALA.Tests\bin\Debug\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\MyProjects\ITWALA.Tests\bin\Debug\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\MyProjects\ITWALA.Tests\bin\Debug\roslyn\Microsoft.CodeAnalysis.dll
+D:\MyProjects\ITWALA.Tests\bin\Debug\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\MyProjects\ITWALA.Tests\bin\Debug\roslyn\Microsoft.CSharp.Core.targets
+D:\MyProjects\ITWALA.Tests\bin\Debug\roslyn\Microsoft.VisualBasic.Core.targets
+D:\MyProjects\ITWALA.Tests\bin\Debug\roslyn\System.Collections.Immutable.dll
+D:\MyProjects\ITWALA.Tests\bin\Debug\roslyn\System.Reflection.Metadata.dll
+D:\MyProjects\ITWALA.Tests\bin\Debug\roslyn\vbc.exe
+D:\MyProjects\ITWALA.Tests\bin\Debug\roslyn\VBCSCompiler.exe
+D:\MyProjects\ITWALA.Tests\bin\Debug\roslyn\VBCSCompiler.exe.config
+D:\MyProjects\ITWALA.Tests\bin\Debug\ITWALA.Tests.dll.config
+D:\MyProjects\ITWALA.Tests\bin\Debug\ITWALA.Tests.dll
+D:\MyProjects\ITWALA.Tests\bin\Debug\ITWALA.Tests.pdb
+D:\MyProjects\ITWALA.Tests\bin\Debug\ITWALA.dll
+D:\MyProjects\ITWALA.Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+D:\MyProjects\ITWALA.Tests\bin\Debug\Microsoft.Web.Infrastructure.dll
+D:\MyProjects\ITWALA.Tests\bin\Debug\Newtonsoft.Json.dll
+D:\MyProjects\ITWALA.Tests\bin\Debug\System.Web.Helpers.dll
+D:\MyProjects\ITWALA.Tests\bin\Debug\System.Web.Mvc.dll
+D:\MyProjects\ITWALA.Tests\bin\Debug\System.Web.Razor.dll
+D:\MyProjects\ITWALA.Tests\bin\Debug\System.Web.WebPages.Deployment.dll
+D:\MyProjects\ITWALA.Tests\bin\Debug\System.Web.WebPages.dll
+D:\MyProjects\ITWALA.Tests\bin\Debug\System.Web.WebPages.Razor.dll
+D:\MyProjects\ITWALA.Tests\bin\Debug\System.Web.Optimization.dll
+D:\MyProjects\ITWALA.Tests\bin\Debug\EntityFramework.dll
+D:\MyProjects\ITWALA.Tests\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\MyProjects\ITWALA.Tests\bin\Debug\Microsoft.Owin.dll
+D:\MyProjects\ITWALA.Tests\bin\Debug\AutoMapper.dll
+D:\MyProjects\ITWALA.Tests\bin\Debug\Owin.dll
+D:\MyProjects\ITWALA.Tests\bin\Debug\ITWALA.pdb
+D:\MyProjects\ITWALA.Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
+D:\MyProjects\ITWALA.Tests\bin\Debug\Newtonsoft.Json.xml
+D:\MyProjects\ITWALA.Tests\bin\Debug\System.Web.Helpers.xml
+D:\MyProjects\ITWALA.Tests\bin\Debug\System.Web.Mvc.xml
+D:\MyProjects\ITWALA.Tests\bin\Debug\System.Web.Razor.xml
+D:\MyProjects\ITWALA.Tests\bin\Debug\System.Web.WebPages.xml
+D:\MyProjects\ITWALA.Tests\bin\Debug\System.Web.WebPages.Deployment.xml
+D:\MyProjects\ITWALA.Tests\bin\Debug\System.Web.WebPages.Razor.xml
+D:\MyProjects\ITWALA.Tests\bin\Debug\System.Web.Optimization.xml
+D:\MyProjects\ITWALA.Tests\bin\Debug\EntityFramework.xml
+D:\MyProjects\ITWALA.Tests\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+D:\MyProjects\ITWALA.Tests\bin\Debug\Microsoft.Owin.xml
+D:\MyProjects\ITWALA.Tests\bin\Debug\AutoMapper.xml
+D:\MyProjects\ITWALA.Tests\obj\Debug\ITWALA.Tests.csprojResolveAssemblyReference.cache
+D:\MyProjects\ITWALA.Tests\obj\Debug\ITWALA.Tests.dll
+D:\MyProjects\ITWALA.Tests\obj\Debug\ITWALA.Tests.pdb
