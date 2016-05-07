@@ -1,13 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using DotNetOpenAuth.AspNet;
@@ -15,7 +8,6 @@ using ITWALA.BusinessModel;
 using Microsoft.AspNet.Identity;
 using ITWALA.Models;
 using ITWALA.Mappers;
-using Microsoft.Web.WebPages.OAuth;
 using Newtonsoft.Json.Linq;
 
 namespace ITWALA.Controllers
@@ -301,5 +293,6 @@ namespace ITWALA.Controllers
             }
             return View("ChangePassword",viewModel);
         }
+
     }
 }

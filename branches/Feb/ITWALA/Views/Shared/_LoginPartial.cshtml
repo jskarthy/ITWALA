@@ -21,11 +21,10 @@
     else
     {
         <li><a id="registerLink" data-toggle="modal" data-target="#myModal" href="#">Register</a></li>
-        <li><a id="loginLink" data-toggle="modal" data-target="#myModal" href="#">Login</a></li>
+        <li>@Html.ActionLink("Login", "Login", "Account", new {ReturnUrl = HttpContext.Current.Request.Url.ToString()}, new { @class = "modal-link" })</li>
     }
 </ul>
 
 <div id="myModal">
     @{ Html.RenderAction("Register", "Account"); }
-    @{ Html.RenderAction("Login", "Account", new {ReturnUrl = HttpContext.Current.Request.Url.ToString()}); }
 </div>

@@ -1,65 +1,109 @@
 ﻿@using ITWALA.Models
 @model LoginViewModel
 @{
-    ViewBag.Title = "Log in";
+    ViewBag.ModalTitle = "Login";
+    ViewBag.ModalId = "LoginModal";
 }
+@using (Html.BeginForm("Login_POST", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "loginForm" }))
+{
+    <div class="modal-header">
+        @Html.Label("Login")
+        <input type="button" data-dismiss="modal" class="close" aria-hidden="true" value="&times;" />
+    </div>
+    <div class="modal-body">
+        @Html.AntiForgeryToken()
 
-<div id="loginModal" class="modal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <input type="button" data-dismiss="modal" class="close" aria-hidden="true" value="&times;" />
-                @Html.Label("Login")
-            </div>
-            <div class="modal-body">
-                @using (Html.BeginForm("Login_POST", "Account", new { ReturnUrl = HttpContext.Current.Request.Url.ToString() }, FormMethod.Post, new { @style="width:100%;display:table", @class = "form-horizontal", role = "form", id = "loginForm" }))
-                {
-                    @Html.AntiForgeryToken()
+        <div style="display: table;width:100%">
 
-                    <div style="width: 55%; display: table-cell">
-                        @Html.ValidationSummary("", new {@class = "text-danger", @id = "LoginValidationErrorDiv"})
-                        <div class="form-group">
-                            <div class="col-sm-2">
-                                @Html.TextBoxFor(m => m.Username, new {@class = "form-control", @placeholder = "Username"})
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-2">
-                                @Html.TextBoxFor(m => m.Password, new {@class = "form-control", @placeholder = "Password"})
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
-                                <div class="checkbox">
-                                    @Html.CheckBoxFor(m => m.RememberMe)
-                                    @Html.LabelFor(m => m.RememberMe)
-                                </div>
-                            </div>
-                        </div>
-                    </div>  
-                    <div style="width:5%"></div>
-                    <div style="width: 40%; display: table-cell">
-                        <div>
-                            @Html.ActionLink(" Login with Google", "GoogleLogin", "Account", new { provider = "google" }, new { @class = "btn btn-google fa fa-google" })
-                        </div>
-                        <div style="padding-top: 2em">
-                            @*@Html.ActionLink("Login with Fb", "ExternalLogin", "Account", new { provider = "facebook" }, null)*@
-                            @Html.ActionLink(" Login with Facebook", "FacebookLogin", "Account", new { @class = "btn btn-facebook fa fa-facebook" })
-                        </div>
-                    </div>
-                }
-            </div>
-            <div class="modal-footer">
+            <div style="width: 55%; display: table-cell; padding-top: 1em">
                 <div class="form-group">
-                    <div class="col-lg-offset-3 col-lg-4">
-                        <button class="btn btn-primary" type="submit" id="LoginBtn">Login</button>
+                    <div class="col-sm-offset-1">
+                        @Html.TextBoxFor(m => m.Username, new { @class = "form-control", @placeholder = "Username" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-1">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2">
+                        <div class="checkbox">
+                            @Html.CheckBoxFor(m => m.RememberMe)
+                            @Html.LabelFor(m => m.RememberMe)
+                        </div>
                     </div>
                 </div>
             </div>
+            <div style="width: 5%"></div>
+            <div style="width: 40%; display: table-cell; padding-top: 1em">
+                <div>
+                    @Html.ActionLink(" Login with Google", "GoogleLogin", "Account", new { provider = "google" }, new { @class = "btn btn-google fa fa-google" })
+                </div>
+                <div style="padding-top: 2em">
+                    @Html.ActionLink(" Login with Facebook", "FacebookLogin", "Account", new { @class = "btn btn-facebook fa fa-facebook" })
+                </div>
+            </div>
+        </div>
+        <div class="validationErrors">
+            @Html.ValidationSummary("", new { @class = "text-danger", @id = "LoginValidationErrorDiv" })
+        </div>
+
+    </div>
+
+    <div class="modal-footer">
+        <div class="form-group">
+            <div class="col-lg-offset-3 col-lg-4">
+                <button class="btn btn-primary" type="submit" id="LoginButton">Login</button>
+            </div>
         </div>
     </div>
-</div>
+}
 
+<script type="text/javascript">
+    $(document).ready(function () {
+        var isNullOrNothing = function(object) {
+            if (object == null || object.val() === "") {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        var showOrHideErrors = function(show) {
+            var errorResult = $("#LoginValidationErrorDiv");
+            if (show) {
+                errorResult.show();
+            } else {
+                errorResult.hide();
+            }
+        }
+    });
+    $("#LoginButton").click(function(e) {
+        e.preventDefault();
+        debugger;
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("Login_Validate", "Account")",
+            data: $('#loginForm').serialize(),
+        success: function(response) {
+            if (response != null) {
+                if (response.result === true) {
+                    $("#loginForm").submit();
+                } else {
+                    $("#LoginValidationErrorDiv").html("<ul></ul>");
+                    $.each(response.errors, function(index, error) {
+                        $("#LoginValidationErrorDiv").append("<li>" + error + "</li>");
+                    });
+                }
+            }
+        },
+        error: function(err) {
+            console.log(err);
+            alert("Something went wrong");
+        }
+    });
+    });
+</script>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
